@@ -4,13 +4,14 @@ echo.
 echo.
 echo *******************************************************************
 echo *******************************************************************
-echo **     Ferramenta de manutencao preventiva para Windows 10        **  
+echo **     Ferramenta de manutencao preventiva para Windows          **
+echo **			  compatibilidade: 7, 8, 8.1 e 10                     **
 echo **        Inicie este script em modo administrador.              **  
 echo *******************************************************************
 echo **          Ao finalizar o computador sera reiniciado            ** 
 echo *******************************************************************
 echo **           Pode levar varios minutos para finalizar            ** 
-echo **                        Por Felipe Schorles                    ** 
+echo **                  Por Felipe Schorles                          ** 
 echo *******************************************************************
 echo.*******************************************************************
 echo.
@@ -51,6 +52,13 @@ echo.
 echo.
 call :carrega 8 "iniciando..."
 
+call :carrega 8 "********* RECRIANDO IP **********"
+ipconfig /release
+echo.
+ipconfig /renew
+echo.
+echo.
+
 :carrega
 set ver=%2
 set ver=%ver:"= %
@@ -86,7 +94,7 @@ Ping -N 2 "Localhost" >nul
 Echo Concluido!
 Echo.
 
-echo ***************** Limpa Temp �su�rio Presente *********************
+call :carrega 8 ***************** Limpa Temp usuario Presente *********************
 echo.
 echo.
 color f4
@@ -94,21 +102,21 @@ cd C:\Windows\Temp
 erase /f /q /s
 
 
-echo *****************Limpa Temp do �su�rio Presente *********************
+call :carrega 8 *****************Limpa Temp do usuario Presente *********************
 DEL /S /Q /F �%Userprofile%\Configura�oes locais\Temporary Internet Files\*.*�
 FOR /D %%d IN (�%Userprofile%\Configura�oes locais\Temporary Internet Files\*.*�) DO RD /S /Q �%%d�
 
-echo ***************** Limpa Recent Usu�rio *********************
+echo ***************** Limpa Recent Usuario *********************
 DEL /S /Q /F �%userprofile%\Recent\*.*�
 FOR /D %%d IN (�%Userprofile%\Recent\*.*�) DO RD /S /Q �%%d�
 
-echo ***************** Limpa Temp Sistema *********************
+call :carrega 8 ***************** Limpa Temp Sistema *********************
 DEL /F/S/Q %WINDIR%\*.TMP
 DEL /F/S/Q %WINDIR%\TEMP\*.*
 FOR /D %%d IN (�%WINDIR%\TEMP\*.*�) DO RD /S /Q �%%d�
 DEL /F/S/Q %WINDIR%\Prefetch\*.*
 
-echo ***************** Limpa Temp �su�rio Presente *********************
+echo ***************** Limpa Temp usuario Presente *********************
 echo.
 echo.
 color f4
@@ -116,7 +124,7 @@ cd C:\Windows\Temp
 erase /f /q /s
 
 
-echo ***************** Removendo temporarios *********************
+call :carrega 8 ***************** Removendo temporarios *********************
 echo.
 echo.
 color f4
@@ -124,7 +132,8 @@ cd /
 erase /f /q /s *.tmp
 
 
-echo ********************** Verificar integridade do disco ****************
+call :carrega 8 ********************** Verificar integridade do disco ****************
+call :carrega 8 ******este processo pode demorar dependendo da situacao do disco *****
 echo.
 echo.
 chkdsk /f /r
@@ -141,11 +150,11 @@ echo.
 echo ******************************************************************
 echo ******************************************************************
 echo **              Finalizado em %date% as %time%                  **
-echo **             necess�rio reiniciar o computador                **
+echo **             necessario reiniciar o computador                **
 echo ******************************************************************
 echo ******************************************************************
 ECHO.
-ECHO **************INFORMA��ES ATUAIS SOBRE O SISTEMA******************
+ECHO **************INFORMACOES ATUAIS SOBRE O SISTEMA******************
 ECHO.
 MEM
 ECHO.
