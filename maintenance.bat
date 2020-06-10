@@ -136,9 +136,9 @@ call :carrega 8 ********************** Verificar integridade do disco **********
 call :carrega 8 ******este processo pode demorar dependendo da situacao do disco *****
 echo.
 echo.
-chkdsk /f /r
-echo.
 sfc/scannow
+echo.
+chkdsk /f /r
 echo.
 Dism /Online /Cleanup-Image /ScanHealth
 echo.
