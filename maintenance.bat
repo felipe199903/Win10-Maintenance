@@ -138,7 +138,6 @@ echo.
 echo.
 sfc/scannow
 echo.
-chkdsk /f /r
 echo.
 Dism /Online /Cleanup-Image /ScanHealth
 echo.
