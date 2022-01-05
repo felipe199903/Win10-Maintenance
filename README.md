@@ -9,4 +9,4 @@ objetive to reduce the amount of 'noise' the user has to deal with.
 - clean DNS cache
 - release and renew IP
 - clean TEMP, %TEMP%, RECENT e Prefetch from the user and system.
-- Scan disc health and restore if have some issue.
+- scan disc health and restore if have some issue.
